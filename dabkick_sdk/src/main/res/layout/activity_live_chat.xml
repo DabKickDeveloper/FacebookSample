@@ -388,7 +388,7 @@
                         android:layout_marginLeft="10dp"
                         android:visibility="visible">
 
-                        <com.dabkick.sampleapp.CustomText
+                        <com.dabkick.sdk.CustomText
                             android:id="@+id/number"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -399,7 +399,7 @@
                             android:visibility="gone" />
                     </RelativeLayout>
 
-                    <com.dabkick.sampleapp.CustomText
+                    <com.dabkick.sdk.CustomText
                         android:id="@+id/chat_image_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -498,7 +498,7 @@
         android:background="@drawable/video_list_view_background"
         android:visibility="gone">
 
-        <com.dabkick.sampleapp.Horizontal.HorizontalListView
+        <com.dabkick.sdk.Horizontal.HorizontalListView
             android:id="@+id/video_main_listview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -506,7 +506,7 @@
             android:divider="@null"
             android:listSelector="#00000000"
             android:scrollbars="none"
-            android:stackFromBottom="false"></com.dabkick.sampleapp.Horizontal.HorizontalListView>
+            android:stackFromBottom="false"></com.dabkick.sdk.Horizontal.HorizontalListView>
 
         <RelativeLayout
             android:id="@+id/search_bar_test"

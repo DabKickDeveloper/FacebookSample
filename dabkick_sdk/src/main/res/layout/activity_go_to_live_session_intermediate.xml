@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="230dp">
 
-        <com.dabkick.sampleapp.CircularImageView
+        <com.dabkick.sdk.CircularImageView
             android:id="@+id/friend_image_layout"
             android:layout_width="100dp"
             android:layout_height="100dp"
