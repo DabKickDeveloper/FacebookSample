@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="header">#58567D</color>
+    <color name="white">#FFFFFF</color>
+    <color name="lightgray">#F0F0F0</color>
+    <color name="main_app_color">#ffcf4c29</color>
+
+    <color name="text_selected">#ffcf4c29</color>
+    <color name="text_over">#ffb9c4cb</color>
+    <color name="text_default">#ff5b656f</color>
+    <color name="text_disabled">#ffa6b3bf</color>
+    <color name="text_header">#ff7e8e9e</color>
+
+    <color name="text_switch_selected">#ffffff</color>
+    <color name="text_switch">#ff41484f</color>
+
+    <color name="text_button">#ff41484f</color>
+    <color name="text_button_disabled">#ffa6b3bf</color>
+    <color name="text_button_selected">#ff41484f</color>
+    <color name="text_button_over">#ffcf4c29</color>
+
+    <color name="numpad_background_bottom">#ffe4edf2</color>
+    <color name="numpad_background_dialer">#ffd8d8d8</color>
+    <color name="numpad_background_top">#ffb1bdc3</color>
+
+    <color name="missed_calls_background">#ffcf4c29</color>
+    <color name="alert_button">#5fa3d0</color>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="landscape_background">#CCCCCC</color>
+
+    <color name="text_photos_submenu">#999999</color>
+
+    <color name="text_contrast">#ff000000</color>
+    <color name="audio_video_back_blue">#0D6FDF</color>
+    <color name="audio_video_back_gray">#99000000</color><!-- If background is white, set to black, else set to white -->
+    <color name="fifty_percent_white">#BBFFFFFF</color>
+    <color name="blue">#0D6FDF</color>
+    <color name="light_black_shade">#D0CFCF</color>
+    <color name="red_translucent">#CCED1C24</color>
+    <color name="red">#E2041c</color>
+    <color name="red_dark">#b31217</color>
+    <color name="hintColor">#A0A0A0</color>
+    <color name="ninety_Percent_white">#E6FFFFFF</color>
+    <color name="headerColor">#eaeaea</color>
+    <color name="headerTextColor">#4D4D4D</color>
+    <color name="fieldTextColor">#333333</color>
+    <color name="fieldUnderLineColor">#efefef</color>
+    <color name="goBackgroundColor">#0573ae</color>
+    <color name="lightBlueColor">#0085E5</color>
+    <color name="hintLightGray">#E0E0E0</color>
+    <color name="hintLightLightGray">#E2E2E2</color>
+    <color name="signup_gray">#999999</color>
+    <color name="pop_up_gray">#FF454444</color>
+    <drawable name="white">#ffffff</drawable>
+    <drawable name="black">#000000</drawable>
+    <drawable name="green">#347C2C</drawable>
+    <drawable name="pink">#FF00FF</drawable>
+    <drawable name="violet">#a020f0</drawable>
+    <drawable name="darkblue">#0058bd</drawable>
+    <drawable name ="blue">#0d6fdf</drawable>
+    <drawable name="grey">#778899</drawable>
+    <drawable name="red">#C11B17</drawable>
+    <drawable name="yellow">#FFFF8C</drawable>
+    <drawable name="PowderBlue">#b0e0e6</drawable>
+    <drawable name="brown">#2F1700</drawable>
+    <drawable name="Hotpink">#7D2252</drawable>
+    <string name="select_Category">Select Category</string>
+    <drawable name="darkgrey">#606060</drawable>
+    <drawable name="lightgray">#F0F0F0</drawable>
+</resources>

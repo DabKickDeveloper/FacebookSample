@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Partner Facebook Application</string>
+    <string name="app_id">351736041564660</string>
+    <string name="alphabet">ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789</string>
+     <string name="LeaveAMessageContent">would you like to leave a message\n
+     or photos or videos for your friend?\n
+    \nthey\'d like it - and can \ndab you back easily</string>
+</resources>

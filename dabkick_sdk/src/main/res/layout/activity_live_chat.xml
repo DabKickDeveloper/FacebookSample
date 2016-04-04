@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/live_chat_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context="com.dabkick.sdk.LiveChat">
+
+    <RelativeLayout
+        android:id="@+id/top_banner"
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
+        android:layout_alignParentTop="true"
+        android:background="#80000000">
+
+        <RelativeLayout
+            android:id="@+id/end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="0dp"
+            android:onClick="endBtnClicked"
+            android:splitMotionEvents="false">
+
+            <ImageView
+                android:id="@+id/end_btn_view"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@drawable/round_circle" />
+
+            <TextView
+                android:id="@+id/end_btn_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/end_btn_view"
+                android:layout_alignLeft="@+id/end_btn_view"
+                android:layout_alignRight="@+id/end_btn_view"
+                android:layout_alignTop="@+id/end_btn_view"
+                android:layout_margin="1dp"
+                android:gravity="center"
+                android:text="end"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/chat_view_emoji"
+        android:layout_below="@+id/top_banner"
+        android:layout_marginTop="53dp"
+        android:background="@android:color/transparent"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/hide_layout"
+                    android:layout_width="52dp"
+                    android:layout_height="35dp"
+                    android:layout_above="@+id/chat_view_emoji"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:onClick="onClickHide"
+                    android:visibility="gone">
+
+                    <RelativeLayout
+                        android:layout_width="40dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/rounded_corner_black_white_border">
+
+                        <ImageView
+                            android:id="@+id/image_hide"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/down_arrow_white_gray_v70_xhdpi" />
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <ListView
+                    android:id="@+id/chat_listView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:alpha="100"
+                    android:background="@android:color/transparent"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:clickable="true"
+                    android:divider="@android:color/transparent"
+                    android:dividerHeight="10.0sp"
+                    android:drawSelectorOnTop="false"
+                    android:fadingEdge="none"
+                    android:isScrollContainer="false"
+                    android:scrollbars="none"
+                    android:scrollingCache="false"
+                    android:stackFromBottom="true"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/chat_view_emoji"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_above="@+id/chat_layout"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/rounded_corner_top"
+        android:clickable="true"
+        android:visibility="gone">
+
+
+        <RelativeLayout
+            android:id="@+id/emoji_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/text_layout"
+            android:layout_alignEnd="@+id/text_layout"
+            android:layout_alignLeft="@+id/text_layout"
+            android:layout_alignRight="@+id/text_layout"
+            android:layout_alignStart="@+id/text_layout"
+            android:clickable="true"
+            android:gravity="center"
+            android:visibility="visible">
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView"
+                android:layout_width="298dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/linear_emoji"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:id="@+id/smile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onClickSmile">
+
+                        <ImageView
+                            android:id="@+id/emoji_icon1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/smile_emoji" />
+
+                        <TextView
+                            android:id="@+id/emoji_txt1"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/emoji_icon1"
+                            android:gravity="center"
+                            android:text="smile"
+                            android:textColor="#000000" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/luv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onClickLuv">
+
+                        <ImageView
+                            android:id="@+id/emoji_icon2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/luv_emoji" />
+
+                        <TextView
+                            android:id="@+id/emoji_txt2"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/emoji_icon2"
+                            android:gravity="center"
+                            android:text="luv"
+                            android:textColor="#000000" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/lol"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onClickLol">
+
+                        <ImageView
+                            android:id="@+id/emoji_icon3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/lol_emoji" />
+
+                        <TextView
+                            android:id="@+id/emoji_txt3"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/emoji_icon3"
+                            android:gravity="center"
+                            android:text="lol"
+                            android:textColor="#000000" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/wink"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onClickWink">
+
+                        <ImageView
+                            android:id="@+id/emoji_icon4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/wink_emoji" />
+
+                        <TextView
+                            android:id="@+id/emoji_txt4"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/emoji_icon4"
+                            android:gravity="center"
+                            android:text="wink"
+                            android:textColor="#000000" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/dude"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onClickDude">
+
+                        <ImageView
+                            android:id="@+id/emoji_icon5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/dude_emoji" />
+
+                        <TextView
+                            android:id="@+id/emoji_txt5"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/emoji_icon5"
+                            android:gravity="center"
+                            android:text="dude"
+                            android:textColor="#000000" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rofl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onClickRofl">
+
+                        <ImageView
+                            android:id="@+id/emoji_icon6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/rofl_emoji" />
+
+                        <TextView
+                            android:id="@+id/emoji_txt6"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/emoji_icon6"
+                            android:gravity="center"
+                            android:text="rofl"
+                            android:textColor="#000000" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:visibility="visible">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/ls_videos_search_txt_corners"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/dummy_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_corner"
+                    android:clickable="true"
+                    android:focusableInTouchMode="true"
+                    android:fontFamily="HelveticaNeue-Medium.otf"
+                    android:gravity="center"
+                    android:text="Write a comment"
+                    android:textColor="#4D4D4D"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/chat_layout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/white"
+        android:splitMotionEvents="false">
+
+        <HorizontalScrollView
+            android:id="@+id/scroller"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:splitMotionEvents="false">
+
+            <LinearLayout
+                android:id="@+id/linear_Layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:splitMotionEvents="false">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:splitMotionEvents="false">
+
+                    <ImageView
+                        android:id="@+id/chat_image"
+                        android:layout_width="90dp"
+                        android:layout_height="70dp"
+                        android:onClick="onClickChat"
+                        android:src="@drawable/chat_only_gray_nav_v70" />
+
+                    <ImageView
+                        android:id="@+id/chat_image_when_clicked"
+                        android:layout_width="70dp"
+                        android:layout_height="40dp"
+                        android:layout_alignLeft="@+id/chat_image"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginTop="6dp"
+                        android:src="@drawable/red_down_nav_btn_v70_xhdpi"
+                        android:visibility="gone" />
+
+                    <RelativeLayout
+                        android:id="@+id/number_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:visibility="visible">
+
+                        <com.dabkick.sampleapp.CustomText
+                            android:id="@+id/number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/round"
+                            android:gravity="center"
+                            android:text="1234"
+                            android:textColor="@color/white"
+                            android:visibility="gone" />
+                    </RelativeLayout>
+
+                    <com.dabkick.sampleapp.CustomText
+                        android:id="@+id/chat_image_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/chat_image"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="7dp"
+                        android:text="chat"
+                        android:textColor="#333333"
+                        android:textSize="10.5sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:splitMotionEvents="false">
+
+                    <ImageView
+                        android:id="@+id/video_image"
+                        android:layout_width="90dp"
+                        android:layout_height="70dp"
+                        android:onClick="onClickVideo"
+                        android:src="@drawable/videos_gray_nav" />
+
+                    <ImageView
+                        android:id="@+id/video_image_when_clicked"
+                        android:layout_width="70dp"
+                        android:layout_height="40dp"
+                        android:layout_alignLeft="@+id/video_image"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginTop="6dp"
+                        android:src="@drawable/red_down_nav_btn_v70_xhdpi"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/kb_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:alpha="0.9"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/downArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="onClickHideChatKB"
+            android:src="@drawable/ic_keyboard_arrow_down_black_36dp"
+            android:visibility="visible" />
+
+        <EditText
+            android:id="@+id/chat_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="3dp"
+            android:background="@android:color/transparent"
+            android:cursorVisible="false"
+            android:imeOptions="actionSend"
+            android:inputType="textCapSentences"
+            android:maxLines="3"
+            android:minHeight="45dp"
+            android:minLines="1"
+            android:textColor="#4D4D4D"
+            android:textSize="17sp"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/video_frag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/chat_layout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/video_list_view_background"
+        android:visibility="gone">
+
+        <com.dabkick.sampleapp.Horizontal.HorizontalListView
+            android:id="@+id/video_main_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:divider="@null"
+            android:listSelector="#00000000"
+            android:scrollbars="none"
+            android:stackFromBottom="false"></com.dabkick.sampleapp.Horizontal.HorizontalListView>
+
+        <RelativeLayout
+            android:id="@+id/search_bar_test"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:background="@color/hintLightGray"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:visibility="gone">
+
+            <!--<RelativeLayout-->
+            <!--android:id="@+id/video_search_dummy_layout"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_marginRight="10dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:background="@drawable/ls_videos_search_txt_corners"-->
+            <!--android:clickable="true"-->
+            <!--android:gravity="center">-->
+
+            <!--<ImageView-->
+            <!--android:id="@+id/hintSearchIcon"-->
+            <!--android:layout_width="30dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginLeft="20dp" />-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/video_search_dummy"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginLeft="5dp"-->
+            <!--android:layout_toRightOf="@+id/hintSearchIcon"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:hint="Search web videos"-->
+            <!--android:visibility="visible" />-->
+            <!--</RelativeLayout>-->
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/tv_show_frag"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:visibility="gone">
+
+            <RelativeLayout
+                android:id="@+id/episode_title_bar"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:background="#FFFFFF"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/tv_show_back_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Select an Episode"
+                    android:textColor="#0086E6"
+                    android:textSize="19dp" />
+            </RelativeLayout>
+
+            <ListView
+                android:id="@+id/tv_show_list_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/episode_title_bar"
+                android:layout_marginTop="10dp"
+                android:divider="@null"
+                android:listSelector="#00000000"
+                android:scrollbars="none"></ListView>
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

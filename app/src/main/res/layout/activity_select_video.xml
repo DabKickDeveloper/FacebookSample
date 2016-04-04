@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dabkick.partner.fb.SelectVideo">
+
+    <com.dabkick.sdk.Horizontal.HorizontalListView
+        android:id="@+id/testvideosListView"
+        android:layout_marginTop="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="105dp"
+        android:layout_marginBottom="10dp"/>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:visibility="gone"/>
+
+    <!--<Button-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="Watch with friends"-->
+    <!--android:id="@+id/wwf"-->
+    <!--android:layout_alignParentTop="true"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_marginTop="150dp" />-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status:"
+        android:textStyle="bold"
+        android:id="@+id/status"
+        android:layout_below="@+id/testvideosListView"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:id="@+id/statusMsg"
+        android:layout_below="@+id/status"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:maxLines="15"
+        android:scrollbars = "vertical"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UserInfo:"
+        android:textStyle="bold"
+        android:id="@+id/userInfotxt"
+        android:layout_below="@+id/statusMsg"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:id="@+id/userInfo"
+        android:layout_below="@+id/userInfotxt"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:maxLines="15"
+        android:scrollbars = "vertical"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="GO TO LIVESESSION"
+        android:layout_below="@+id/userInfo"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/go_to_ls_btn"/>
+
+</RelativeLayout>
