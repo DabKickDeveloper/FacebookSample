@@ -4,8 +4,18 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.dabkick.sdk.DabKick_Agent;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginBehavior;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
 
 
 import java.util.Arrays;
@@ -13,12 +23,33 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity {
 
     CallbackManager callbackManager;
+    Button fbLogin;
+    EditText email, phone, id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        loginWithFB();
+
+        init();
+
+        fbLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                loginWithFB();
+
+            }
+        });
+    }
+
+    void init(){
+
+        fbLogin = (Button)findViewById(R.id.cnt_btn);
+        email = (EditText)findViewById(R.id.email_id);
+        phone = (EditText)findViewById(R.id.ph_num);
+        id = (EditText)findViewById(R.id.un_id);
+
     }
 
     void loginWithFB(){
