@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context="com.dabkick.partner.fb.SelectVideo">
 
-    <com.dabkick.sdk.Horizontal.HorizontalListView
+  <!--  <com.dabkick.sdk.Horizontal.HorizontalListView
         android:id="@+id/testvideosListView"
         android:layout_marginTop="25dp"
         android:layout_width="match_parent"
@@ -18,18 +18,18 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:visibility="gone"/>
+        android:visibility="gone"/>-->
 
-    <!--<Button-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="Watch with friends"-->
-    <!--android:id="@+id/wwf"-->
-    <!--android:layout_alignParentTop="true"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:layout_marginTop="150dp" />-->
+    <Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Watch with friends"
+    android:id="@+id/wwf"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="150dp" />
 
-    <TextView
+    <!--<TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Status:"
@@ -75,6 +75,6 @@
         android:text="GO TO LIVESESSION"
         android:layout_below="@+id/userInfo"
         android:layout_marginLeft="10dp"
-        android:id="@+id/go_to_ls_btn"/>
+        android:id="@+id/go_to_ls_btn"/>-->
 
 </RelativeLayout>

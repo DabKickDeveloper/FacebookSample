@@ -10,19 +10,13 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.dabkick.sdk.Adapter.VideoHorizontalAdapter;
-import com.dabkick.sdk.DabKickVideoAgent.DabKickGlobalData;
-import com.dabkick.sdk.DabKickVideoAgent.DabKickVideoDetail;
-import com.dabkick.sdk.DabKickVideoAgent.DabKickVideoManagerAgent;
-import com.dabkick.sdk.DabKickVideoAgent.DabKickVideoPlayer.PlayDabKickVideoActivity;
-import com.dabkick.sdk.DabKick_Agent;
-import com.dabkick.sdk.Horizontal.HorizontalListView;
+import com.dabkick.sdk.Dabkick;
 
 import java.util.ArrayList;
 
 public class SelectVideo extends AppCompatActivity {
 
-    //your own listview
+    /*//your own listview
     public com.dabkick.sdk.Horizontal.HorizontalListView hListView;
     //your own adapter
     public VideoHorizontalAdapter mVideoHorizontalAdapter;
@@ -38,14 +32,25 @@ public class SelectVideo extends AppCompatActivity {
     TextView statusMsg,userInfo;
     Button watchWithFriends;
 
-    ProgressBar mProgressBar;
+    ProgressBar mProgressBar;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_video);
 
-        init();
+        Button watchWithFriends = (Button)findViewById(R.id.wwf) ;
+
+                watchWithFriends.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Dabkick.watchWithFriends(SelectVideo.this, "uu9XbrApmXE");
+
+            }
+        });
+
+       /* init();
 
         statusMsg.setMovementMethod(new ScrollingMovementMethod());
         DabKick_Agent.displayStatusMessages(statusMsg);
@@ -103,16 +108,16 @@ public class SelectVideo extends AppCompatActivity {
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
-        });
+        });*/
     }
 
     void init(){
 
-        statusMsg = (TextView)findViewById(R.id.statusMsg);
+        /*statusMsg = (TextView)findViewById(R.id.statusMsg);
         userInfo = (TextView)findViewById(R.id.userInfo) ;
 //        watchWithFriends = (Button)findViewById(R.id.wwf) ;
         mProgressBar = (ProgressBar)findViewById(R.id.progress_bar);
         goToLs = (Button) findViewById(R.id.go_to_ls_btn);
-
+*/
     }
 }
