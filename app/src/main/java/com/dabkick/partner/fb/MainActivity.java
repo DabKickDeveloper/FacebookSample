@@ -127,33 +127,39 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                String e = emailId.getText().toString();
-                String p = phNum.getText().toString();
-                String partnerID = unId.getText().toString();
+                if (!emailId.getText().toString().isEmpty() ||
+                        !phNum.getText().toString().isEmpty() || !unId.getText().toString().isEmpty()) {
 
-                UserIdentifier identifier = new UserIdentifier();
-                identifier.email = e;
-                identifier.phoneNumber = p;
-                identifier.uniqueID = partnerID;
+                    String e = emailId.getText().toString();
+                    String p = phNum.getText().toString();
+                    String partnerID = unId.getText().toString();
 
-                Dabkick.setOnRegisterFinished(new Dabkick.OnRegisterFinishedListener() {
-                    @Override
-                    public void onRegistered(boolean b, String s) {
+                    UserIdentifier identifier = new UserIdentifier();
+                    identifier.email = e;
+                    identifier.phoneNumber = p;
+                    identifier.uniqueID = partnerID;
 
-                        Runnable ok = new Runnable() {
-                            @Override
-                            public void run() {
-                                Intent selectVideo = new Intent(MainActivity.this, SelectVideo.class);
-                                selectVideo.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                startActivity(selectVideo);
-                                finish();
-                            }
-                        };
-                        DialogHelper.popupAlertDialog(MainActivity.this, null, "The app is now registered with DabKick with the provided user credentials.", "ok", ok);
-                    }
-                });
-                String packageName = MainActivity.this.getPackageName();
-                Dabkick.register(MainActivity.this, packageName, identifier);
+                    Dabkick.setOnRegisterFinished(new Dabkick.OnRegisterFinishedListener() {
+                        @Override
+                        public void onRegistered(boolean b, String s) {
+
+                            Runnable ok = new Runnable() {
+                                @Override
+                                public void run() {
+                                    Intent selectVideo = new Intent(MainActivity.this, SelectVideo.class);
+                                    selectVideo.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(selectVideo);
+                                    finish();
+                                }
+                            };
+                            DialogHelper.popupAlertDialog(MainActivity.this, null, "The app is now registered with DabKick with the provided user credentials.", "ok", ok);
+                        }
+                    });
+                    String packageName = MainActivity.this.getPackageName();
+                    Dabkick.register(MainActivity.this, packageName, identifier);
+                }else{
+                    Toast.makeText(MainActivity.this, "All fields Empty. Enter at least one field", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
