@@ -66,7 +66,7 @@ public class SelectVideo extends AppCompatActivity {
                     public void run() {
                         mProgressBar.setVisibility(View.GONE);
                         //call this method with the search term to get the results
-                        VideosList = videoManager.getSearchResultByTerm("telcom");
+                        VideosList = videoManager.getSearchResultByTerm("facebook");
                         mVideoHorizontalAdapter = new VideoHorizontalAdapter(SelectVideo.this, R.layout.video_view_item, VideosList, false);
                         hListView.setAdapter(mVideoHorizontalAdapter);
                         mVideoHorizontalAdapter.notifyDataSetChanged();
