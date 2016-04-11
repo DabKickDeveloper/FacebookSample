@@ -49,9 +49,12 @@ public class SelectVideo extends AppCompatActivity {
 
         statusMsg.setMovementMethod(new ScrollingMovementMethod());
 
-        String loginInfo = "Email:"+ PreferenceHandler.getEmail()+ "\nPhone number:"+PreferenceHandler.getPhoneNum()
-                +"\nUnique ID:"+PreferenceHandler.getUniqueID();
-        statusMsg.setText(loginInfo);
+        try {
+            String loginInfo = "Email:" + PreferenceHandler.getEmail() + "\nPhone number:" + PreferenceHandler.getPhoneNum()
+                    + "\nUnique ID:" + PreferenceHandler.getUniqueID();
+            statusMsg.setText(loginInfo);
+        }
+        catch (Exception e){}
 
         mProgressBar.setVisibility(View.VISIBLE);
 
@@ -76,7 +79,7 @@ public class SelectVideo extends AppCompatActivity {
             }
         });
         //Condition check to load the searched videos if not throw alert(logic done in DabKickVideoManagerAgent)
-        videoManager.searchVideo("telcom");
+        videoManager.searchVideo("facebook");
 
         hListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
