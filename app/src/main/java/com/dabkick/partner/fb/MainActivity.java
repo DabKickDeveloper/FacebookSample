@@ -14,13 +14,6 @@ import android.widget.Toast;
 import com.dabkick.sdk.Dabkick;
 import com.dabkick.sdk.Global.DialogHelper;
 import com.dabkick.sdk.Global.UserIdentifier;
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.login.LoginBehavior;
-import com.facebook.login.LoginManager;
-import com.facebook.login.LoginResult;
 import com.jakewharton.rxbinding.view.RxView;
 
 
@@ -31,24 +24,16 @@ import rx.functions.Action1;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RelativeLayout container;
     private RelativeLayout userDetails;
-    private RelativeLayout emailFields;
-    private TextView email;
-    private EditText emailId;
-    private RelativeLayout phoneFields;
-    private TextView phone;
-    private EditText phNum;
-    private RelativeLayout uniqueFields;
-    private TextView id;
+    private EditText userName;
+    private EditText profilePicPath;
     private EditText unId;
     private LinearLayout registeredInfo;
     private TextView emailText;
     private TextView phoneText;
     private TextView uniqueIDText;
     private Button resetBtn;
-    private Button cntBtn;
-    CallbackManager callbackManager;
+    private Button regBtn;
 
     /**
      * Find the Views in the layout<br />
@@ -57,23 +42,16 @@ public class MainActivity extends AppCompatActivity {
      * (http://www.buzzingandroid.com/tools/android-layout-finder)
      */
     private void findViews() {
-        container = (RelativeLayout)findViewById( R.id.container );
         userDetails = (RelativeLayout)findViewById( R.id.user_details );
-        emailFields = (RelativeLayout)findViewById( R.id.email_fields );
-        email = (TextView)findViewById( R.id.email );
-        emailId = (EditText)findViewById( R.id.email_id );
-        phoneFields = (RelativeLayout)findViewById( R.id.phone_fields );
-        phone = (TextView)findViewById( R.id.phone );
-        phNum = (EditText)findViewById( R.id.ph_num );
-        uniqueFields = (RelativeLayout)findViewById( R.id.unique_fields );
-        id = (TextView)findViewById( R.id.id );
+        userName = (EditText)findViewById( R.id.user_name);
+        profilePicPath = (EditText)findViewById( R.id.pic_path);
         unId = (EditText)findViewById( R.id.un_id );
         registeredInfo = (LinearLayout)findViewById( R.id.registeredInfo );
         emailText = (TextView)findViewById( R.id.emailText );
         phoneText = (TextView)findViewById( R.id.phoneText );
         uniqueIDText = (TextView)findViewById( R.id.uniqueIDText );
         resetBtn = (Button)findViewById( R.id.reset_btn );
-        cntBtn = (Button)findViewById( R.id.cnt_btn );
+        regBtn = (Button)findViewById( R.id.reg_btn);
     }
 
 
@@ -112,14 +90,11 @@ public class MainActivity extends AppCompatActivity {
             }//.l
         });
 
-        RxView.clicks(cntBtn).throttleFirst(300, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
+        RxView.clicks(regBtn).throttleFirst(300, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
 
-                loginWithFB();
-
-                if (Dabkick.isRegistered(MainActivity.this))
-                {
+                if (Dabkick.isRegistered(MainActivity.this)) {
                     Intent selectVideo = new Intent(MainActivity.this, SelectVideo.class);
                     selectVideo.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(selectVideo);
@@ -127,17 +102,18 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                if (!emailId.getText().toString().isEmpty() ||
-                        !phNum.getText().toString().isEmpty() || !unId.getText().toString().isEmpty()) {
+                if (!unId.getText().toString().isEmpty()) {
 
-                    String e = emailId.getText().toString();
-                    String p = phNum.getText().toString();
+                    String name = userName.getText().toString();
+                    String profilePic = profilePicPath.getText().toString();
                     String partnerID = unId.getText().toString();
 
                     UserIdentifier identifier = new UserIdentifier();
-                    identifier.email = e;
-                    identifier.phoneNumber = p;
+                    identifier.userName = name;
+                    identifier.userProfilePic = profilePic;
                     identifier.uniqueID = partnerID;
+                    identifier.email = null;
+                    identifier.phoneNumber = null;
 
                     Dabkick.setOnRegisterFinished(new Dabkick.OnRegisterFinishedListener() {
                         @Override
@@ -157,55 +133,12 @@ public class MainActivity extends AppCompatActivity {
                     });
                     String packageName = MainActivity.this.getPackageName();
                     Dabkick.register(MainActivity.this, packageName, identifier);
-                }else{
+                } else {
                     Toast.makeText(MainActivity.this, "All fields Empty. Enter at least one field", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
 
-    }
-
-    void loginWithFB(){
-
-        FacebookSdk.sdkInitialize(MainActivity.this.getApplicationContext());
-        LoginManager.getInstance().logInWithReadPermissions(
-                MainActivity.this,
-                Arrays.asList("user_friends"));
-
-        LoginManager.getInstance().setLoginBehavior(LoginBehavior.NATIVE_WITH_FALLBACK);
-
-        callbackManager = CallbackManager.Factory.create();
-        LoginManager.getInstance().registerCallback(callbackManager,
-                new FacebookCallback<LoginResult>() {
-                    @Override
-                    public void onSuccess(LoginResult loginResult) {
-
-                        Dabkick.setFBAccessToken(loginResult);
-                    }
-
-                    @Override
-                    public void onCancel() {
-                        showAlert("Unable to perform selected action because permissions were not granted");
-                    }
-
-                    @Override
-                    public void onError(FacebookException exception) {
-                        showAlert(exception.getMessage());
-                    }
-
-                    private void showAlert(String message) {
-                        new AlertDialog.Builder(MainActivity.this)
-                                .setTitle("Cancelled")
-                                .setMessage(message)
-                                .show();
-                    }
-                });
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 }

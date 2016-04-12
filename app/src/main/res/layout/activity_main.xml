@@ -28,47 +28,47 @@
             android:visibility="visible">
 
             <RelativeLayout
-                android:id="@+id/email_fields"
+                android:id="@+id/name_fields"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/email"
+                    android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="Email" />
+                    android:text="UserName" />
 
                 <EditText
-                    android:id="@+id/email_id"
+                    android:id="@+id/user_name"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
-                    android:layout_toRightOf="@+id/email" />
+                    android:layout_toRightOf="@+id/name" />
 
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/phone_fields"
+                android:id="@+id/profile_pic_fields"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/email_fields"
+                android:layout_below="@+id/name_fields"
                 android:layout_marginTop="15dp">
 
                 <TextView
-                    android:id="@+id/phone"
+                    android:id="@+id/pic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="Phone" />
+                    android:text="ProfilePicPath" />
 
 
                 <EditText
-                    android:id="@+id/ph_num"
+                    android:id="@+id/pic_path"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
-                    android:layout_toRightOf="@+id/phone" />
+                    android:layout_toRightOf="@+id/pic"/>
 
             </RelativeLayout>
 
@@ -76,7 +76,7 @@
                 android:id="@+id/unique_fields"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/phone_fields"
+                android:layout_below="@+id/profile_pic_fields"
                 android:layout_marginTop="15dp">
 
                 <TextView
@@ -183,13 +183,13 @@
             android:text="Reset credentials" />
 
         <Button
-            android:id="@+id/cnt_btn"
+            android:id="@+id/reg_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
-            android:text="Login with FB" />
+            android:text="register" />
 
     </LinearLayout>
 
