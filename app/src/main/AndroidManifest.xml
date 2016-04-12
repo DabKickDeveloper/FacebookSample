@@ -19,8 +19,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".SelectVideo"></activity>
-        <activity android:name=".PlayDabKickVideoActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
     </application>
 
 </manifest>
