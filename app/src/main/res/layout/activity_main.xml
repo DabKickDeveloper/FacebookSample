@@ -37,7 +37,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="UserName" />
+                    android:text="Usr nme" />
 
                 <EditText
                     android:id="@+id/user_name"
@@ -60,7 +60,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="ProfilePicPath" />
+                    android:text="Picture" />
 
 
                 <EditText
@@ -122,28 +122,28 @@
                 <TextView
                     android:width="60dp"
                     android:gravity="left"
-                    android:text="email:"
+                    android:text="Usr name:"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/emailText"
+                    android:id="@+id/nme_txt"
                     android:width="80dp"
                     android:gravity="left"
                     android:padding="5dp"
-                    android:text="email" />
+                    android:text="name" />
 
                 <TextView
                     android:width="60dp"
                     android:gravity="left"
-                    android:text="phone:"
+                    android:text="Picture :"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/phoneText"
+                    android:id="@+id/pic_txt"
                     android:width="60dp"
                     android:gravity="left"
                     android:padding="5dp"
-                    android:text="phone" />
+                    android:text="pic path" />
 
                 <TextView
                     android:width="60dp"

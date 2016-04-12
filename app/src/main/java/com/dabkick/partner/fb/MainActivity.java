@@ -1,6 +1,5 @@
 package com.dabkick.partner.fb;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,7 +16,6 @@ import com.dabkick.sdk.Global.UserIdentifier;
 import com.jakewharton.rxbinding.view.RxView;
 
 
-import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 import rx.functions.Action1;
@@ -29,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText profilePicPath;
     private EditText unId;
     private LinearLayout registeredInfo;
-    private TextView emailText;
-    private TextView phoneText;
+    private TextView nameText;
+    private TextView picText;
     private TextView uniqueIDText;
     private Button resetBtn;
     private Button regBtn;
@@ -47,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
         profilePicPath = (EditText)findViewById( R.id.pic_path);
         unId = (EditText)findViewById( R.id.un_id );
         registeredInfo = (LinearLayout)findViewById( R.id.registeredInfo );
-        emailText = (TextView)findViewById( R.id.emailText );
-        phoneText = (TextView)findViewById( R.id.phoneText );
+        nameText = (TextView)findViewById( R.id.nme_txt);
+        picText = (TextView)findViewById( R.id.pic_txt);
         uniqueIDText = (TextView)findViewById( R.id.uniqueIDText );
         resetBtn = (Button)findViewById( R.id.reset_btn );
         regBtn = (Button)findViewById( R.id.reg_btn);
@@ -69,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
             resetBtn.setVisibility(View.VISIBLE);
 
             UserIdentifier userIdentifier = UserIdentifier.getStoredValue(this);
-            emailText.setText(userIdentifier.email);
-            phoneText.setText(userIdentifier.phoneNumber);
+            nameText.setText(userIdentifier.userName);
+            picText.setText(userIdentifier.userProfilePic);
             uniqueIDText.setText(userIdentifier.uniqueID);
 
         }

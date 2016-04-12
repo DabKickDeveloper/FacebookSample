@@ -52,7 +52,7 @@ public class SelectVideo extends AppCompatActivity {
         statusMsg.setMovementMethod(new ScrollingMovementMethod());
 
         try {
-            String loginInfo = "Email:" + PreferenceHandler.getEmail() + "\nPhone number:" + PreferenceHandler.getPhoneNum()
+            String loginInfo = "Name:" + PreferenceHandler.getUserName() + "\nProfile Pic:" + PreferenceHandler.getUserProfilePic()
                     + "\nUnique ID:" + PreferenceHandler.getUniqueID();
             statusMsg.setText(loginInfo);
         }
