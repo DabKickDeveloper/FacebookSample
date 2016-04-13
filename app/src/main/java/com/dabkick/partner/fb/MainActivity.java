@@ -3,7 +3,10 @@ package com.dabkick.partner.fb;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -23,9 +26,9 @@ import rx.functions.Action1;
 public class MainActivity extends AppCompatActivity {
 
     private RelativeLayout userDetails;
-    private EditText userName;
-    private EditText profilePicPath;
-    private EditText unId;
+    private CustomEdTxt userName;
+    private CustomEdTxt profilePicPath;
+    private CustomEdTxt unId;
     private LinearLayout registeredInfo;
     private TextView nameText;
     private TextView picText;
@@ -41,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
      */
     private void findViews() {
         userDetails = (RelativeLayout)findViewById( R.id.user_details );
-        userName = (EditText)findViewById( R.id.user_name);
-        profilePicPath = (EditText)findViewById( R.id.pic_path);
-        unId = (EditText)findViewById( R.id.un_id );
+        userName = (CustomEdTxt)findViewById( R.id.user_name);
+        profilePicPath = (CustomEdTxt)findViewById( R.id.pic_path);
+        unId = (CustomEdTxt)findViewById( R.id.un_id );
         registeredInfo = (LinearLayout)findViewById( R.id.registeredInfo );
         nameText = (TextView)findViewById( R.id.nme_txt);
         picText = (TextView)findViewById( R.id.pic_txt);
@@ -119,7 +122,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        userName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                boolean handled = false;
+                if (actionId == EditorInfo.IME_ACTION_NEXT) {
+                    requestFocus(profilePicPath);
+                    return true;
+                }
+                return handled;
+            }
+        });
 
+        profilePicPath.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                boolean handled = false;
+                if (actionId == EditorInfo.IME_ACTION_NEXT) {
+                    requestFocus(unId);
+                    return true;
+                }
+                return handled;
+            }
+        });
     }
 
     @Override
@@ -143,5 +168,15 @@ public class MainActivity extends AppCompatActivity {
             userDetails.setVisibility(View.VISIBLE);
             resetBtn.setVisibility(View.GONE);
         }
+    }
+
+    void requestFocus(final EditText editText) {
+        editText.post(new Runnable() {
+            @Override
+            public void run() {
+                editText.requestFocus();
+                editText.setSelection(editText.getText().length());
+            }
+        });
     }
 }

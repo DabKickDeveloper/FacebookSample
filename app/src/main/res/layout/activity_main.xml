@@ -8,190 +8,207 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/container"
+        android:layout_above="@+id/cotainer_layout"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         android:text="Welcome to FB Partner App"
         android:textSize="18dp"
         android:textStyle="bold" />
 
-    <RelativeLayout
-        android:id="@+id/container"
+    <ScrollView
+        android:id="@+id/cotainer_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true">
 
         <RelativeLayout
-            android:id="@+id/user_details"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="visible">
+            android:layout_height="wrap_content">
+
 
             <RelativeLayout
-                android:id="@+id/name_fields"
+                android:id="@+id/container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/name"
+                <RelativeLayout
+                    android:id="@+id/user_details"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="Usr nme" />
+                    android:visibility="visible">
 
-                <EditText
-                    android:id="@+id/user_name"
-                    android:layout_width="150dp"
+                    <RelativeLayout
+                        android:id="@+id/name_fields"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/name"
+                            android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="Usr nme" />
+
+                        <com.dabkick.partner.fb.CustomEdTxt
+                            android:id="@+id/user_name"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:layout_toRightOf="@+id/name"
+                            android:imeOptions="actionNext"
+                            android:inputType="text" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/profile_pic_fields"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/name_fields"
+                        android:layout_marginTop="15dp">
+
+                        <TextView
+                            android:id="@+id/pic"
+                            android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="Picture" />
+
+
+                        <com.dabkick.partner.fb.CustomEdTxt
+                            android:id="@+id/pic_path"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:layout_toRightOf="@+id/pic"
+                            android:imeOptions="actionNext"
+                            android:inputType="text" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/unique_fields"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/profile_pic_fields"
+                        android:layout_marginTop="15dp">
+
+                        <TextView
+                            android:id="@+id/id"
+                            android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="Uniq ID" />
+
+
+                        <com.dabkick.partner.fb.CustomEdTxt
+                            android:id="@+id/un_id"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:layout_toRightOf="@+id/id"
+                            android:imeOptions="actionSend"
+                            android:inputType="text" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/registeredInfo"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_toRightOf="@+id/name" />
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="The app is now registered with DabKick\nwith the provided user credentials." />
+
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:columnCount="2"
+                        android:rowCount="3">
+
+                        <TextView
+                            android:width="60dp"
+                            android:gravity="left"
+                            android:text="Usr name:"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/nme_txt"
+                            android:width="80dp"
+                            android:gravity="left"
+                            android:padding="5dp"
+                            android:text="name" />
+
+                        <TextView
+                            android:width="60dp"
+                            android:gravity="left"
+                            android:text="Picture :"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/pic_txt"
+                            android:width="60dp"
+                            android:gravity="left"
+                            android:padding="5dp"
+                            android:text="pic path" />
+
+                        <TextView
+                            android:width="60dp"
+                            android:gravity="left"
+                            android:text="Uniq ID :"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/uniqueIDText"
+                            android:width="60dp"
+                            android:gravity="left"
+                            android:padding="5dp"
+                            android:text="unique" />
+
+                    </GridLayout>
+
+
+                </LinearLayout>
+
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/profile_pic_fields"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/name_fields"
-                android:layout_marginTop="15dp">
+                android:layout_below="@+id/container"
+                android:layout_centerHorizontal="true">
 
-                <TextView
-                    android:id="@+id/pic"
+                <Button
+                    android:id="@+id/reset_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="Picture" />
 
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Reset credentials" />
 
-                <EditText
-                    android:id="@+id/pic_path"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_toRightOf="@+id/pic"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/unique_fields"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/profile_pic_fields"
-                android:layout_marginTop="15dp">
-
-                <TextView
-                    android:id="@+id/id"
+                <Button
+                    android:id="@+id/reg_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="Uniq ID" />
 
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:text="register" />
 
-                <EditText
-                    android:id="@+id/un_id"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_toRightOf="@+id/id" />
-
-            </RelativeLayout>
-
+            </LinearLayout>
         </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/registeredInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="The app is now registered with DabKick\nwith the provided user credentials." />
-
-            <GridLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:columnCount="2"
-                android:rowCount="3">
-
-                <TextView
-                    android:width="60dp"
-                    android:gravity="left"
-                    android:text="Usr name:"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/nme_txt"
-                    android:width="80dp"
-                    android:gravity="left"
-                    android:padding="5dp"
-                    android:text="name" />
-
-                <TextView
-                    android:width="60dp"
-                    android:gravity="left"
-                    android:text="Picture :"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/pic_txt"
-                    android:width="60dp"
-                    android:gravity="left"
-                    android:padding="5dp"
-                    android:text="pic path" />
-
-                <TextView
-                    android:width="60dp"
-                    android:gravity="left"
-                    android:text="Uniq ID :"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/uniqueIDText"
-                    android:width="60dp"
-                    android:gravity="left"
-                    android:padding="5dp"
-                    android:text="unique" />
-
-            </GridLayout>
-
-
-        </LinearLayout>
-
-
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/container"
-        android:layout_centerHorizontal="true">
-
-        <Button
-            android:id="@+id/reset_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_centerHorizontal="true"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="15dp"
-            android:text="Reset credentials" />
-
-        <Button
-            android:id="@+id/reg_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            android:text="register" />
-
-    </LinearLayout>
-
+    </ScrollView>
 
 </RelativeLayout>
