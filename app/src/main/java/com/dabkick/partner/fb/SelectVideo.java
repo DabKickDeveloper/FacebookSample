@@ -1,8 +1,9 @@
 package com.dabkick.partner.fb;
 
+
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,18 +11,15 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.dabkick.sdk.Dabkick;
 import com.dabkick.sdk.Global.GlobalHandler;
 import com.dabkick.sdk.Global.HorizontalListView;
 import com.dabkick.sdk.Global.PreferenceHandler;
-import com.dabkick.sdk.Global.UserInfo;
 import com.dabkick.sdk.Global.VideoManager;
 import com.dabkick.sdk.Livesession.LSManager.YouTubeVideoDetail;
 import com.dabkick.sdk.Livesession.VideoHorizontalAdapter;
-import com.dabkick.sdk.Video.PlayDabKickVideoActivity;
+import com.dabkick.sdk.Video.PlayDabKickVideoActivity2;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SelectVideo extends AppCompatActivity {
 
@@ -33,6 +31,7 @@ public class SelectVideo extends AppCompatActivity {
     VideoManager videoManager = VideoManager.getInstance();
     //local array list to get the results
     ArrayList VideosList;
+
 
     //Dabkickvideodetail
     YouTubeVideoDetail mYoutubeVideoDetailSingleItem;

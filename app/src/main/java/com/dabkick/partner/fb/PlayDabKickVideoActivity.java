@@ -89,7 +89,7 @@ public class PlayDabKickVideoActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle bundle) {
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(bundle);
         setContentView(com.dabkick.sdk.R.layout.activity_play_dab_kick_video);
         findViews();

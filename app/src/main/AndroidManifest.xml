@@ -19,6 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SelectVideo"></activity>
+        <activity android:name=".PlayDabKickVideoActivity" android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"></activity>
     </application>
 
 </manifest>
