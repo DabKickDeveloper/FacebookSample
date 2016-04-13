@@ -11,12 +11,56 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    signingConfigs {
+
+        production {
+            storeFile rootProject.file('ReleaseKey.jks')
+            storePassword "simplefun2012"
+            keyAlias "simplefun2012"
+            keyPassword "simplefun2012"
+        }
+
+        staging {
+            storeFile rootProject.file('AlphaReleaseKey.jks')
+            storePassword "simplefun2012"
+            keyAlias "simplefun2012"
+            keyPassword "simplefun2012"
+        }
+
+        release {
+            storeFile rootProject.file('AlphaReleaseKey.jks')
+            storePassword "simplefun2012"
+            keyAlias "simplefun2012"
+            keyPassword "simplefun2012"
+        }
+
+    }
+
+
     buildTypes {
         release {
+            // applicationIdSuffix ".release"
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        staging {
+            applicationIdSuffix ".staging"
+            signingConfig signingConfigs.staging
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        production {
+            applicationIdSuffix ".production"
+            signingConfig signingConfigs.production
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+
     }
+
 }
 
 repositories {
