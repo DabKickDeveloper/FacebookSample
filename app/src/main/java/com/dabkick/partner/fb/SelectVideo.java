@@ -16,8 +16,8 @@ import com.dabkick.sdk.Global.HorizontalListView;
 import com.dabkick.sdk.Global.PreferenceHandler;
 import com.dabkick.sdk.Global.UserInfo;
 import com.dabkick.sdk.Global.VideoManager;
+import com.dabkick.sdk.Livesession.LSManager.YouTubeVideoDetail;
 import com.dabkick.sdk.Livesession.VideoHorizontalAdapter;
-import com.dabkick.sdk.Livesession.YouTubeVideoDetail;
 import com.dabkick.sdk.Video.PlayDabKickVideoActivity;
 
 import java.util.ArrayList;
@@ -95,7 +95,7 @@ public class SelectVideo extends AppCompatActivity {
             }
         });
 
-        Dabkick.setCustomizedFriendsList(getFacebookFriends());
+        //Dabkick.setCustomizedFriendsList(getFacebookFriends());
     }
 
     void init(){
@@ -107,44 +107,5 @@ public class SelectVideo extends AppCompatActivity {
 
 
 
-    List<UserInfo> getFacebookFriends(){
 
-        List<UserInfo> friends = new ArrayList<>();
-
-        UserInfo firstFriend = new UserInfo();
-        firstFriend.setName("Chinmaya");
-        firstFriend.setImageURL("http://images.all-free-download.com/images/graphiclarge/daisy_pollen_flower_220533.jpg");
-        firstFriend.setUniqueID("Chinmaya");
-
-        UserInfo secondFriend = new UserInfo();
-        secondFriend.setName("Hitesh");
-        secondFriend.setImageURL("https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTW-hhdcp9Bmxl0l6JP6AxK3up4HjgT1Ss2_wW0ZlxbsW_GV09-");
-        secondFriend.setUniqueID("Hitesh");
-
-
-        UserInfo thirdFriend = new UserInfo();
-        thirdFriend.setName("Deepak");
-        thirdFriend.setImageURL("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTki4U4qokHd7NmDBXDEAr7f5KBCDLXyV6JxHjpLHFlGMKbxXIL");
-        thirdFriend.setUniqueID("Deepak");
-
-
-        UserInfo fourthFriend = new UserInfo();
-        fourthFriend.setName("Ashwini");
-        fourthFriend.setImageURL("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfme0I3266Al0RFrFjIFnYdQBiUsI_i7y5iptSsV9tKBVm6A4b");
-        fourthFriend.setUniqueID("Ashwini");
-
-
-        UserInfo fifthFriend = new UserInfo();
-        fifthFriend.setName("Vallabh");
-        fifthFriend.setImageURL("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ9mTL3v8UVTu-LqYWRghiTi-lJbzI7zk8chJN5cDXqX1IlZiRtew");
-        fifthFriend.setUniqueID("Vallabh");
-
-        friends.add(firstFriend);
-        friends.add(secondFriend);
-        friends.add(thirdFriend);
-        friends.add(fourthFriend);
-        friends.add(fifthFriend);
-
-        return  friends;
-    }
 }
