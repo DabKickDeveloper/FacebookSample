@@ -51,7 +51,7 @@ public class SelectVideo extends AppCompatActivity {
 
         try {
             String loginInfo = "Name:" + PreferenceHandler.getUserName() + "\nProfile Pic:" + PreferenceHandler.getUserProfilePic()
-                    + "\nUnique ID:" + PreferenceHandler.getUniqueID();
+                    + "\nFacebook ID:" + PreferenceHandler.getUniqueID();
             statusMsg.setText(loginInfo);
         }
         catch (Exception e){}

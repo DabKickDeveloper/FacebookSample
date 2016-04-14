@@ -98,7 +98,7 @@
                             android:layout_width="60dp"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:text="Uniq ID" />
+                            android:text="Facebook ID" />
 
 
                         <com.dabkick.partner.fb.CustomEdTxt
@@ -164,7 +164,7 @@
                         <TextView
                             android:width="60dp"
                             android:gravity="left"
-                            android:text="Uniq ID :"
+                            android:text="Facebook ID :"
                             android:textStyle="bold" />
 
                         <TextView
