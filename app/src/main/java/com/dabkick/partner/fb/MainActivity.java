@@ -22,12 +22,19 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphRequestAsyncTask;
+import com.facebook.GraphResponse;
+import com.facebook.HttpMethod;
 import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.jakewharton.rxbinding.view.RxView;
 
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.concurrent.TimeUnit;
 
@@ -69,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         resetBtn = (Button)findViewById( R.id.reset_btn );
         regBtn = (Button)findViewById( R.id.reg_btn);
         loginButton = (LoginButton)findViewById(R.id.login_button);
+        loginButton.setReadPermissions("user_friends");
     }
 
     @Override
@@ -209,6 +217,27 @@ public class MainActivity extends AppCompatActivity {
                         Log.e("deepak","profile details: FacebookID: "+get_id+" Facebook profile name: "+get_name+" profile picture: "+get_profile_image);
                     }
                 }
+
+                GraphRequestAsyncTask graphRequestAsyncTask = new GraphRequest(
+                        loginResult.getAccessToken(),
+                        "/me/friends",
+                        null,
+                        HttpMethod.GET,
+                        new GraphRequest.Callback() {
+                            public void onCompleted(GraphResponse response) {
+                                try {
+                                    JSONArray rawName = response.getJSONObject().getJSONArray("data");
+                                    Log.e("deepak", "rawdata: "+rawName.toString());
+                                    Log.e("deepak", "response: "+response.toString());
+//                                    intent.putExtra("jsondata", rawName.toString());
+//                                    startActivity(intent);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }).executeAsync();
+
+                graphRequestAsyncTask.execute();
             }
 
             @Override
