@@ -142,7 +142,8 @@
 
                         <TextView
                             android:id="@+id/nme_txt"
-                            android:width="80dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:gravity="left"
                             android:padding="5dp"
                             android:text="name" />
@@ -155,7 +156,8 @@
 
                         <TextView
                             android:id="@+id/pic_txt"
-                            android:width="60dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:gravity="left"
                             android:padding="5dp"
                             android:text="pic path" />
@@ -168,7 +170,8 @@
 
                         <TextView
                             android:id="@+id/uniqueIDText"
-                            android:width="80dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:gravity="left"
                             android:padding="5dp"
                             android:text="unique" />
