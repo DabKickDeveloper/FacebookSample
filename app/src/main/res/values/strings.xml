@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Facebook Partner Application</string>
+    <string name="fb_app_name">Facebook Partner Application</string>
+
+    <string name="fb_app_id">606173482866216</string>
+    <string name="my_link"><a ref="http://dabkick.com/">appstore</a></string>
+
 </resources>
