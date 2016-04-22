@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.dabkick.sdk.Dabkick;
 import com.dabkick.sdk.Global.DialogHelper;
 import com.dabkick.sdk.Global.GlobalHandler;
+import com.dabkick.sdk.Global.PreferenceHandler;
 import com.dabkick.sdk.Global.UserIdentifier;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
@@ -44,6 +45,8 @@ import rx.functions.Action1;
 
 public class MainActivity extends AppCompatActivity {
 
+    static boolean isFBLoggedIn = false;
+    String get_id, get_name, get_profile_image;
     private RelativeLayout userDetails;
     private CustomEdTxt userName;
 //    private CustomEdTxt profilePicPath;
@@ -54,13 +57,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView uniqueIDText;
     private Button resetBtn;
     private Button regBtn;
-
     private LoginButton loginButton;
     private CallbackManager callbackManager;
-
-    String get_id, get_name, get_profile_image;
-
-    static boolean isFBLoggedIn = false;
 
     /**
      * Find the Views in the layout<br />
@@ -257,6 +255,8 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             }
                         }).executeAsync();
+
+                //  graphRequestAsyncTask.execute();
             }
 
             @Override
