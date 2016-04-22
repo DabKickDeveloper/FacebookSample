@@ -95,7 +95,7 @@ public class PlayDabKickVideoActivity extends Activity {
         findViews();
         utilities = new Utilities();
 
-        DialogHelper.popupAlertDialog(this, null, "Video is still playing in the partner app's video player. When \'Watch with friends\' button is clicked, the user can watch the video together inside DabKick's interface.", "ok");
+        DialogHelper.popupAlertDialog(this, null, "Step 3.\nTap on \'Watch with friends\' to experience a live DabKick session.", "ok");
         videoseek.getProgressDrawable().setColorFilter(Color.LTGRAY, PorterDuff.Mode.SRC_IN);
 
         Intent intent = getIntent();
@@ -260,32 +260,32 @@ public class PlayDabKickVideoActivity extends Activity {
         List<UserInfo> friends = new ArrayList<>();
 
         UserInfo firstFriend = new UserInfo();
-        firstFriend.setName("Chinmaya");
+        firstFriend.setName("Maya Jones");
         firstFriend.setImageURL("http://images.all-free-download.com/images/graphiclarge/daisy_pollen_flower_220533.jpg");
-        firstFriend.setUniqueID("Chinmaya");
+        firstFriend.setUniqueID("Maya Jones");
 
         UserInfo secondFriend = new UserInfo();
-        secondFriend.setName("Hitesh");
+        secondFriend.setName("Tesh Smith");
         secondFriend.setImageURL("https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTW-hhdcp9Bmxl0l6JP6AxK3up4HjgT1Ss2_wW0ZlxbsW_GV09-");
-        secondFriend.setUniqueID("Hitesh");
+        secondFriend.setUniqueID("Tesh Smith");
 
 
         UserInfo thirdFriend = new UserInfo();
-        thirdFriend.setName("Deepak");
+        thirdFriend.setName("Deepak Choprah");
         thirdFriend.setImageURL("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTki4U4qokHd7NmDBXDEAr7f5KBCDLXyV6JxHjpLHFlGMKbxXIL");
-        thirdFriend.setUniqueID("Deepak");
+        thirdFriend.setUniqueID("Deepak Choprah");
 
 
         UserInfo fourthFriend = new UserInfo();
-        fourthFriend.setName("Ashwini");
+        fourthFriend.setName("Ash Wynn");
         fourthFriend.setImageURL("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfme0I3266Al0RFrFjIFnYdQBiUsI_i7y5iptSsV9tKBVm6A4b");
-        fourthFriend.setUniqueID("Ashwini");
+        fourthFriend.setUniqueID("Ash Wynn");
 
 
         UserInfo fifthFriend = new UserInfo();
-        fifthFriend.setName("Vallabh");
+        fifthFriend.setName("Val Johnson");
         fifthFriend.setImageURL("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ9mTL3v8UVTu-LqYWRghiTi-lJbzI7zk8chJN5cDXqX1IlZiRtew");
-        fifthFriend.setUniqueID("Vallabh");
+        fifthFriend.setUniqueID("Val Johnson");
 
         friends.add(firstFriend);
         friends.add(secondFriend);
