@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                     resetBtn.setVisibility(View.GONE);
                     userName.setText("");
                     userName.clearFocus();
-                    unId.setText("");
+                    unId.setText("Your facebook ID will appear here");
                 }else{
                     Toast.makeText(MainActivity.this,"Please Log out before reset", Toast.LENGTH_SHORT).show();
                 }
@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                if (!unId.getText().toString().isEmpty()) {
+                if (!unId.getText().toString().isEmpty() && isFBLoggedIn) {
 
                     String name = userName.getText().toString();
 //                    String profilePic = profilePicPath.getText().toString();
@@ -285,7 +285,7 @@ public class MainActivity extends AppCompatActivity {
                     resetBtn.setVisibility(View.GONE);
                     userName.setText("");
                     userName.clearFocus();
-                    unId.setText("");
+                    unId.setText("Your facebook ID will appear here");
                 }
             }
         };

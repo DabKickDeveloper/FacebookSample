@@ -102,7 +102,7 @@
                             android:layout_marginLeft="30dp"
                             android:layout_toRightOf="@+id/id"
                             android:gravity="center_vertical"
-                            android:hint=""/>
+                            android:hint="Your facebook ID will appear here"/>
 
                     </RelativeLayout>
 
