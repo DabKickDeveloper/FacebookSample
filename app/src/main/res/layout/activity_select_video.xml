@@ -3,22 +3,96 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context="com.dabkick.partner.fb.SelectVideo">
 
-    <com.dabkick.sdk.Global.HorizontalListView
-        android:id="@+id/testvideosListView"
-        android:layout_marginTop="25dp"
-        android:layout_width="match_parent"
-        android:layout_height="105dp"
-        android:layout_marginBottom="10dp"/>
-
-    <ProgressBar
-        android:id="@+id/progress_bar"
+    <RelativeLayout
+        android:id="@+id/first_step_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:visibility="gone"/>
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/black">
+
+        <TextView
+            android:id="@+id/status_step_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Step 1. Partner app is connected to DabKick"
+            android:textColor="@color/ninety_percent_black"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/status_step_one"
+            android:layout_marginTop="15dp">
+
+            <com.dabkick.sdk.Global.CircularImageView
+                android:id="@+id/profile_pic"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:fitsSystemWindows="true"
+                android:src="@drawable/generic_avatar_cat_v70" />
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/profile_pic"
+                android:text="name"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+        </RelativeLayout>
+        <!--<TextView-->
+        <!--android:id="@+id/statusMsg"-->
+        <!--android:layout_width="300dp"-->
+        <!--android:layout_height="150dp"-->
+        <!--android:layout_below="@+id/status_step_one"-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:layout_marginTop="15dp"-->
+        <!--android:maxLines="30"-->
+        <!--android:scrollbars="vertical"-->
+        <!--android:textSize="18dp" />-->
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/second_step_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/first_step_container"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/status_step_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="15dp"
+            android:text="Step 2. Tap on video to preview it."
+            android:textColor="@color/ninety_percent_black"
+            android:textStyle="bold" />
+
+        <com.dabkick.sdk.Global.HorizontalListView
+            android:id="@+id/testvideosListView"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_below="@+id/status_step_two"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="25dp" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:visibility="gone" />
+    </RelativeLayout>
+
 
     <!--<Button-->
     <!--android:layout_width="wrap_content"-->
@@ -28,28 +102,6 @@
     <!--android:layout_alignParentTop="true"-->
     <!--android:layout_centerHorizontal="true"-->
     <!--android:layout_marginTop="150dp" />-->
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login information:"
-        android:textStyle="bold"
-        android:id="@+id/status"
-        android:layout_below="@+id/testvideosListView"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="10dp"/>
-
-    <TextView
-        android:layout_width="300dp"
-        android:layout_height="150dp"
-        android:id="@+id/statusMsg"
-        android:layout_below="@+id/status"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="20dp"
-        android:maxLines="30"
-        android:textSize="18dp"
-        android:scrollbars = "vertical"/>
-
 
 
 </RelativeLayout>

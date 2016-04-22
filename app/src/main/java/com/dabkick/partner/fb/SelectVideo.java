@@ -5,18 +5,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.dabkick.sdk.Global.CircularImageView;
 import com.dabkick.sdk.Global.GlobalHandler;
 import com.dabkick.sdk.Global.HorizontalListView;
+import com.dabkick.sdk.Global.ImageLoader.ImagesManager;
 import com.dabkick.sdk.Global.PreferenceHandler;
 import com.dabkick.sdk.Global.VideoManager;
 import com.dabkick.sdk.Livesession.LSManager.YouTubeVideoDetail;
 import com.dabkick.sdk.Livesession.VideoHorizontalAdapter;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -35,8 +39,10 @@ public class SelectVideo extends AppCompatActivity {
     //Dabkickvideodetail
     YouTubeVideoDetail mYoutubeVideoDetailSingleItem;
 
-    TextView statusMsg,userInfo;
+    //TextView statusMsg, userInfo;
     Button watchWithFriends;
+    CircularImageView mProfilePicture;
+    TextView mUserName;
 
     ProgressBar mProgressBar;
 
@@ -47,14 +53,18 @@ public class SelectVideo extends AppCompatActivity {
 
         init();
 
-        statusMsg.setMovementMethod(new ScrollingMovementMethod());
+        // statusMsg.setMovementMethod(new ScrollingMovementMethod());
 
         try {
-            String loginInfo = "Name:" + PreferenceHandler.getUserName() + "\nProfile Pic:" + PreferenceHandler.getUserProfilePic()
-                    + "\nFacebook ID:" + PreferenceHandler.getUniqueID();
-            statusMsg.setText(loginInfo);
+            if (PreferenceHandler.getUserName() != null)
+                mUserName.setText(PreferenceHandler.getUserName());
+            ImagesManager.getInstance().displayImage(PreferenceHandler.getUserProfilePic(), mProfilePicture);
+
+//            String loginInfo = "Name:" + PreferenceHandler.getUserName() + "\nPrreferenceHandler.getUserProfilePic()ofile Pic:" + PreferenceHandler.getUserProfilePic()
+//                    + "\nFacebook ID:" + PreferenceHandler.getUniqueID();
+//               statusMsg.setText(loginInfo);
+        } catch (Exception e) {
         }
-        catch (Exception e){}
 
         mProgressBar.setVisibility(View.VISIBLE);
 
@@ -96,14 +106,14 @@ public class SelectVideo extends AppCompatActivity {
         //Dabkick.setCustomizedFriendsList(getFacebookFriends());
     }
 
-    void init(){
+    void init() {
 
-        statusMsg = (TextView)findViewById(R.id.statusMsg);
-        mProgressBar = (ProgressBar)findViewById(R.id.progress_bar);
+        //statusMsg = (TextView) findViewById(R.id.statusMsg);
+        mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
+        mProfilePicture = (CircularImageView) findViewById(R.id.profile_pic);
+        mUserName = (TextView) findViewById(R.id.user_name);
 
     }
-
-
 
 
 }
