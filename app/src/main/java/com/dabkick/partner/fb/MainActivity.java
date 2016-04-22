@@ -19,6 +19,7 @@ import com.dabkick.sdk.Global.DialogHelper;
 import com.dabkick.sdk.Global.GlobalHandler;
 import com.dabkick.sdk.Global.PreferenceHandler;
 import com.dabkick.sdk.Global.UserIdentifier;
+import com.dabkick.sdk.Global.UserInfo;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
@@ -38,7 +39,9 @@ import com.jakewharton.rxbinding.view.RxView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import rx.functions.Action1;
@@ -59,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
     private Button regBtn;
     private LoginButton loginButton;
     private CallbackManager callbackManager;
+
+    public static ArrayList<UserInfo> friendsList = new ArrayList<>();
 
     /**
      * Find the Views in the layout<br />
@@ -239,17 +244,25 @@ public class MainActivity extends AppCompatActivity {
 
                 GraphRequestAsyncTask graphRequestAsyncTask = new GraphRequest(
                         loginResult.getAccessToken(),
-                        "/me/friends",
+                        "/me/invitable_friends",
                         null,
                         HttpMethod.GET,
                         new GraphRequest.Callback() {
                             public void onCompleted(GraphResponse response) {
                                 try {
                                     JSONArray rawName = response.getJSONObject().getJSONArray("data");
+                                    ArrayList resultList = new ArrayList();
                                     Log.e("deepak", "rawdata: "+rawName.toString());
-                                    Log.e("deepak", "response: "+response.toString());
-//                                    intent.putExtra("jsondata", rawName.toString());
-//                                    startActivity(intent);
+                                    Log.e("deepak", "length: "+rawName.length());
+                                    for (int i = 0; i < rawName.length(); i++) {
+                                        JSONObject jsonObject = rawName.getJSONObject(i);
+                                        UserInfo item = new UserInfo();
+                                        item.setName(jsonObject.getString("name"));
+                                        item.setImageURL(jsonObject.getJSONObject("picture").getJSONObject("data").getString("url"));
+                                        item.setUniqueID(jsonObject.getString("id"));
+                                        resultList.add(item);
+                                    }
+                                    addFriendsToList(resultList);
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -355,5 +368,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    public void addFriendsToList(ArrayList<UserInfo> list){
+        friendsList = list;
     }
 }
