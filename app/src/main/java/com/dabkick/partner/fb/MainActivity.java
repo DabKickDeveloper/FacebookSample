@@ -97,11 +97,18 @@ public class MainActivity extends AppCompatActivity {
         RxView.clicks(resetBtn).throttleFirst(300, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
-                Dabkick.reset();
-                registeredInfo.setVisibility(View.GONE);
-                userDetails.setVisibility(View.VISIBLE);
-                resetBtn.setVisibility(View.GONE);
-            }//.l
+                if(!isFBLoggedIn) {
+                    Dabkick.reset();
+                    registeredInfo.setVisibility(View.GONE);
+                    userDetails.setVisibility(View.VISIBLE);
+                    resetBtn.setVisibility(View.GONE);
+                    userName.setText("");
+                    userName.clearFocus();
+                    unId.setText("");
+                }else{
+                    Toast.makeText(MainActivity.this,"Please Log out before reset", Toast.LENGTH_SHORT).show();
+                }
+            }
         });
 
         RxView.clicks(regBtn).throttleFirst(300, TimeUnit.MILLISECONDS).subscribe(new Action1<Void>() {
@@ -269,10 +276,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
                 if(currentAccessToken == null){
+
+                    isFBLoggedIn = false;
+
                     Dabkick.reset();
                     registeredInfo.setVisibility(View.GONE);
                     userDetails.setVisibility(View.VISIBLE);
                     resetBtn.setVisibility(View.GONE);
+                    userName.setText("");
+                    userName.clearFocus();
+                    unId.setText("");
                 }
             }
         };
