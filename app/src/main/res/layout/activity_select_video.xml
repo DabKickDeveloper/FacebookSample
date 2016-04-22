@@ -72,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="15dp"
-            android:text="Step 2. Tap on video to preview it."
+            android:text="Step 2. Tap a video to preview it."
             android:textColor="@color/ninety_percent_black"
             android:textStyle="bold" />
 
