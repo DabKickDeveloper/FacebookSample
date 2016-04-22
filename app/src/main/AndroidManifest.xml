@@ -33,7 +33,7 @@
             android:value="@string/fb_app_id" />
         <meta-data
             android:name="com.facebook.sdk.ApplicationName"
-            android:value="@string/fb_app_name" />
+            android:value="@string/app_name" />
     </application>
 
 </manifest>

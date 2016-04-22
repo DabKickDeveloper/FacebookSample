@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <ScrollView
         android:id="@+id/cotainer_layout"
@@ -14,26 +15,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="Welcome to FB Partner App"
-                android:textSize="18dp"
-                android:textStyle="bold" />
-
             <RelativeLayout
                 android:id="@+id/container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/header"
                 android:layout_marginTop="20dp">
 
                 <RelativeLayout
                     android:id="@+id/user_details"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:visibility="visible">
 
                     <RelativeLayout
@@ -43,10 +36,11 @@
 
                         <TextView
                             android:id="@+id/name"
-                            android:layout_width="60dp"
+                            android:layout_width="80dp"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:text="Usr nme" />
+                            android:gravity="right"
+                            android:text="User Name" />
 
                         <com.dabkick.partner.fb.CustomEdTxt
                             android:id="@+id/user_name"
@@ -59,55 +53,56 @@
 
                     </RelativeLayout>
 
+                    <!--<RelativeLayout-->
+                        <!--android:id="@+id/profile_pic_fields"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_below="@+id/name_fields"-->
+                        <!--android:layout_marginTop="15dp">-->
+
+                        <!--<TextView-->
+                            <!--android:id="@+id/pic"-->
+                            <!--android:layout_width="60dp"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_centerVertical="true"-->
+                            <!--android:text="Picture" />-->
+
+
+                        <!--<com.dabkick.partner.fb.CustomEdTxt-->
+                            <!--android:id="@+id/pic_path"-->
+                            <!--android:layout_width="200dp"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_marginLeft="30dp"-->
+                            <!--android:layout_toRightOf="@+id/pic"-->
+                            <!--android:imeOptions="actionNext"-->
+                            <!--android:inputType="text" />-->
+
+                    <!--</RelativeLayout>-->
+
                     <RelativeLayout
-                        android:id="@+id/profile_pic_fields"
+                        android:id="@+id/unique_fields"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/name_fields"
                         android:layout_marginTop="15dp">
 
                         <TextView
-                            android:id="@+id/pic"
-                            android:layout_width="60dp"
+                            android:id="@+id/id"
+                            android:layout_width="80dp"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:text="Picture" />
+                            android:gravity="right"
+                            android:text="Facebook ID" />
 
-
-                        <com.dabkick.partner.fb.CustomEdTxt
-                            android:id="@+id/pic_path"
-                            android:layout_width="200dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="30dp"
-                            android:layout_toRightOf="@+id/pic"
-                            android:imeOptions="actionNext"
-                            android:inputType="text" />
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:id="@+id/unique_fields"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/profile_pic_fields"
-                        android:layout_marginTop="15dp">
 
                         <TextView
-                            android:id="@+id/id"
-                            android:layout_width="60dp"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:text="FB ID" />
-
-
-                        <com.dabkick.partner.fb.CustomEdTxt
                             android:id="@+id/un_id"
                             android:layout_width="200dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="40dp"
                             android:layout_marginLeft="30dp"
                             android:layout_toRightOf="@+id/id"
-                            android:imeOptions="actionSend"
-                            android:inputType="text" />
+                            android:gravity="center_vertical"
+                            android:hint="Your facebook ID will appear here"/>
 
                     </RelativeLayout>
 
@@ -115,9 +110,11 @@
 
                 <LinearLayout
                     android:id="@+id/registeredInfo"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:orientation="vertical"
                     android:visibility="gone">
 
@@ -125,7 +122,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="The app is now registered with DabKick\nwith the provided user credentials." />
+                        android:text="Facebook Partner App is now registered with DabKick." />
 
                     <GridLayout
                         android:layout_width="match_parent"
@@ -136,8 +133,8 @@
 
                         <TextView
                             android:width="80dp"
-                            android:gravity="left"
-                            android:text="Usr name:"
+                            android:gravity="right"
+                            android:text="User Name"
                             android:textStyle="bold" />
 
                         <TextView
@@ -145,27 +142,27 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="left"
-                            android:padding="5dp"
+                            android:padding="10dp"
                             android:text="name" />
+
+                        <!--<TextView-->
+                            <!--android:width="80dp"-->
+                            <!--android:gravity="left"-->
+                            <!--android:text="Picture :"-->
+                            <!--android:textStyle="bold" />-->
+
+                        <!--<TextView-->
+                            <!--android:id="@+id/pic_txt"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:gravity="left"-->
+                            <!--android:padding="5dp"-->
+                            <!--android:text="pic path" />-->
 
                         <TextView
                             android:width="80dp"
-                            android:gravity="left"
-                            android:text="Picture :"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/pic_txt"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="left"
-                            android:padding="5dp"
-                            android:text="pic path" />
-
-                        <TextView
-                            android:width="60dp"
-                            android:gravity="left"
-                            android:text="FB ID :"
+                            android:gravity="right"
+                            android:text="Facebook ID"
                             android:textStyle="bold" />
 
                         <TextView
@@ -173,7 +170,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="left"
-                            android:padding="5dp"
+                            android:padding="10dp"
                             android:text="unique" />
 
                     </GridLayout>
@@ -184,10 +181,19 @@
 
             </RelativeLayout>
 
+            <com.facebook.login.widget.LoginButton
+                android:layout_centerHorizontal="true"
+                android:id="@+id/login_button"
+                android:layout_below="@+id/container"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/container"
+                android:layout_below="@+id/login_button"
+                android:layout_marginTop="15dp"
                 android:layout_centerHorizontal="true">
 
                 <Button
@@ -197,28 +203,17 @@
 
                     android:layout_centerHorizontal="true"
                     android:layout_marginRight="10dp"
-                    android:layout_marginTop="15dp"
                     android:text="Reset credentials" />
 
                 <Button
                     android:id="@+id/reg_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="15dp"
                     android:text="register" />
 
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>
-
-    <com.facebook.login.widget.LoginButton
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/login_button"
-        android:layout_marginBottom="30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
 </RelativeLayout>

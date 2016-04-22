@@ -18,6 +18,8 @@ import com.dabkick.sdk.Dabkick;
 import com.dabkick.sdk.Global.DialogHelper;
 import com.dabkick.sdk.Global.GlobalHandler;
 import com.dabkick.sdk.Global.UserIdentifier;
+import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -44,11 +46,11 @@ public class MainActivity extends AppCompatActivity {
 
     private RelativeLayout userDetails;
     private CustomEdTxt userName;
-    private CustomEdTxt profilePicPath;
-    private CustomEdTxt unId;
+//    private CustomEdTxt profilePicPath;
+    private TextView unId;
     private LinearLayout registeredInfo;
     private TextView nameText;
-    private TextView picText;
+//    private TextView picText;
     private TextView uniqueIDText;
     private Button resetBtn;
     private Button regBtn;
@@ -57,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
     private CallbackManager callbackManager;
 
     String get_id, get_name, get_profile_image;
+
+    static boolean isFBLoggedIn = false;
 
     /**
      * Find the Views in the layout<br />
@@ -67,11 +71,11 @@ public class MainActivity extends AppCompatActivity {
     private void findViews() {
         userDetails = (RelativeLayout)findViewById( R.id.user_details );
         userName = (CustomEdTxt)findViewById( R.id.user_name);
-        profilePicPath = (CustomEdTxt)findViewById( R.id.pic_path);
-        unId = (CustomEdTxt)findViewById( R.id.un_id );
+//        profilePicPath = (CustomEdTxt)findViewById( R.id.pic_path);
+        unId = (TextView)findViewById( R.id.un_id );
         registeredInfo = (LinearLayout)findViewById( R.id.registeredInfo );
         nameText = (TextView)findViewById( R.id.nme_txt);
-        picText = (TextView)findViewById( R.id.pic_txt);
+//        picText = (TextView)findViewById( R.id.pic_txt);
         uniqueIDText = (TextView)findViewById( R.id.uniqueIDText );
         resetBtn = (Button)findViewById( R.id.reset_btn );
         regBtn = (Button)findViewById( R.id.reg_btn);
@@ -115,12 +119,12 @@ public class MainActivity extends AppCompatActivity {
                 if (!unId.getText().toString().isEmpty()) {
 
                     String name = userName.getText().toString();
-                    String profilePic = profilePicPath.getText().toString();
+//                    String profilePic = profilePicPath.getText().toString();
                     String partnerID = unId.getText().toString();
 
                     UserIdentifier identifier = new UserIdentifier();
                     identifier.userName = name;
-                    identifier.userProfilePic = profilePic;
+                    identifier.userProfilePic = get_profile_image;
                     identifier.uniqueID = partnerID;
                     identifier.email = null;
                     identifier.phoneNumber = null;
@@ -138,13 +142,13 @@ public class MainActivity extends AppCompatActivity {
                                     //finish();
                                 }
                             };
-                            DialogHelper.popupAlertDialog(MainActivity.this, null, "The app is now registered with DabKick with the provided user credentials.", "ok", ok);
+                            DialogHelper.popupAlertDialog(MainActivity.this, null, "Facebook Partner App is now registered with DabKick.", "ok", ok);
                         }
                     });
                     String packageName = MainActivity.this.getPackageName();
                     Dabkick.register(MainActivity.this, packageName, identifier);
                 } else {
-                    Toast.makeText(MainActivity.this, "All fields Empty. Enter at least one field", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Please login before Register", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -154,24 +158,24 @@ public class MainActivity extends AppCompatActivity {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 boolean handled = false;
                 if (actionId == EditorInfo.IME_ACTION_NEXT) {
-                    requestFocus(profilePicPath);
+//                    requestFocus(profilePicPath);
                     return true;
                 }
                 return handled;
             }
         });
 
-        profilePicPath.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                boolean handled = false;
-                if (actionId == EditorInfo.IME_ACTION_NEXT) {
-                    requestFocus(unId);
-                    return true;
-                }
-                return handled;
-            }
-        });
+//        profilePicPath.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//            @Override
+//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+//                boolean handled = false;
+//                if (actionId == EditorInfo.IME_ACTION_NEXT) {
+////                    requestFocus(unId);
+//                    return true;
+//                }
+//                return handled;
+//            }
+//        });
 
         //Deepak added
         //for facebook login
@@ -179,6 +183,8 @@ public class MainActivity extends AppCompatActivity {
             private ProfileTracker mProfileTracker;
             @Override
             public void onSuccess(LoginResult loginResult) {
+
+                isFBLoggedIn = true;
 
                 if (Dabkick.isRegistered(MainActivity.this)) {
                     Intent selectVideo = new Intent(MainActivity.this, SelectVideo.class);
@@ -197,10 +203,14 @@ public class MainActivity extends AppCompatActivity {
                             get_name = profile2.getName().toString();
                             get_profile_image = profile2.getProfilePictureUri(400, 400).toString();
 
+                            //To set the fields
+                            userName.setText(get_name);
+                            unId.setText(get_id);
+
                             Log.e("deepak","profile details: FacebookID: "+get_id+" Facebook profile name: "+get_name+" profile picture: "+get_profile_image);
                             mProfileTracker.stopTracking();
 
-                            registerUser();
+//                            registerUser();
                         }
                     };
                     mProfileTracker.startTracking();
@@ -212,7 +222,11 @@ public class MainActivity extends AppCompatActivity {
                         get_name = profile.getName();
                         get_profile_image = profile.getProfilePictureUri(400, 400).toString();
 
-                        registerUser();
+                        //To set the fields
+                        userName.setText(get_name);
+                        unId.setText(get_id);
+
+//                        registerUser();
 
                         Log.e("deepak","profile details: FacebookID: "+get_id+" Facebook profile name: "+get_name+" profile picture: "+get_profile_image);
                     }
@@ -236,8 +250,6 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             }
                         }).executeAsync();
-
-                graphRequestAsyncTask.execute();
             }
 
             @Override
@@ -250,6 +262,20 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        //Deepak added
+        //To know whether user logged in or logged out.
+        AccessTokenTracker accessTokenTracker = new AccessTokenTracker() {
+            @Override
+            protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
+                if(currentAccessToken == null){
+                    Dabkick.reset();
+                    registeredInfo.setVisibility(View.GONE);
+                    userDetails.setVisibility(View.VISIBLE);
+                    resetBtn.setVisibility(View.GONE);
+                }
+            }
+        };
     }
 
     private void registerUser(){
@@ -292,7 +318,7 @@ public class MainActivity extends AppCompatActivity {
 
             UserIdentifier userIdentifier = UserIdentifier.getStoredValue(this);
             nameText.setText(userIdentifier.userName);
-            picText.setText(userIdentifier.userProfilePic);
+//            picText.setText(userIdentifier.userProfilePic);
             uniqueIDText.setText(userIdentifier.uniqueID);
 
         }
