@@ -108,108 +108,35 @@
 
                 </RelativeLayout>
 
-                <LinearLayout
-                    android:id="@+id/registeredInfo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:orientation="vertical"
-                    android:visibility="gone">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Facebook Partner App is now registered with DabKick." />
-
-                    <GridLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:columnCount="2"
-                        android:rowCount="3">
-
-                        <TextView
-                            android:width="80dp"
-                            android:gravity="right"
-                            android:text="User Name"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/nme_txt"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="left"
-                            android:padding="10dp"
-                            android:text="name" />
-
-                        <!--<TextView-->
-                            <!--android:width="80dp"-->
-                            <!--android:gravity="left"-->
-                            <!--android:text="Picture :"-->
-                            <!--android:textStyle="bold" />-->
-
-                        <!--<TextView-->
-                            <!--android:id="@+id/pic_txt"-->
-                            <!--android:layout_width="match_parent"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:gravity="left"-->
-                            <!--android:padding="5dp"-->
-                            <!--android:text="pic path" />-->
-
-                        <TextView
-                            android:width="80dp"
-                            android:gravity="right"
-                            android:text="Facebook ID"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/uniqueIDText"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="left"
-                            android:padding="10dp"
-                            android:text="unique" />
-
-                    </GridLayout>
-
-
-                </LinearLayout>
 
 
             </RelativeLayout>
 
-            <com.facebook.login.widget.LoginButton
-                android:layout_centerHorizontal="true"
-                android:id="@+id/login_button"
-                android:layout_below="@+id/container"
-                android:layout_width="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_height="wrap_content" />
+
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/login_button"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="35dp"
+                android:visibility="visible"
+                android:layout_below="@+id/container"
                 android:layout_centerHorizontal="true">
 
-                <Button
-                    android:id="@+id/reset_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
+                <com.facebook.login.widget.LoginButton
                     android:layout_centerHorizontal="true"
-                    android:layout_marginRight="10dp"
-                    android:text="Reset credentials" />
+                    android:id="@+id/login_button"
+                    android:layout_below="@+id/container"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content" />
 
                 <Button
                     android:id="@+id/reg_btn"
+                    android:layout_marginLeft="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
+                    android:visibility="gone"
                     android:text="register" />
 
             </LinearLayout>

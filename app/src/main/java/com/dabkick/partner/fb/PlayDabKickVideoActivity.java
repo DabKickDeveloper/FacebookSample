@@ -248,8 +248,8 @@ public class PlayDabKickVideoActivity extends Activity {
                 List<VideoMessage> list = new ArrayList<VideoMessage>();
                 list.add(mYouTubeMsg);
 
-                Dabkick.watchWithFriends(PlayDabKickVideoActivity.this,list,getFacebookFriends());
-//                Dabkick.watchWithFriends(PlayDabKickVideoActivity.this,list,MainActivity.friendsList);
+   //             Dabkick.watchWithFriends(PlayDabKickVideoActivity.this,list,getFacebookFriends());
+                Dabkick.watchWithFriends(PlayDabKickVideoActivity.this,list,MainActivity.friendsList);
             }
         });
 
