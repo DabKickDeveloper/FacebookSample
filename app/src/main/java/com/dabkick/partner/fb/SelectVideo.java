@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.dabkick.sdk.Dabkick;
 import com.dabkick.sdk.Global.CircularImageView;
 import com.dabkick.sdk.Global.GlobalHandler;
 import com.dabkick.sdk.Global.HorizontalListView;
@@ -20,6 +21,10 @@ import com.dabkick.sdk.Global.PreferenceHandler;
 import com.dabkick.sdk.Global.VideoManager;
 import com.dabkick.sdk.Livesession.LSManager.YouTubeVideoDetail;
 import com.dabkick.sdk.Livesession.VideoHorizontalAdapter;
+import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookSdk;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -34,6 +39,8 @@ public class SelectVideo extends AppCompatActivity {
     VideoManager videoManager = VideoManager.getInstance();
     //local array list to get the results
     ArrayList VideosList;
+
+    private CallbackManager callbackManager;
 
 
     //Dabkickvideodetail
@@ -50,6 +57,9 @@ public class SelectVideo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_video);
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        callbackManager = CallbackManager.Factory.create();
 
         init();
 
@@ -103,7 +113,17 @@ public class SelectVideo extends AppCompatActivity {
             }
         });
 
-        //Dabkick.setCustomizedFriendsList(getFacebookFriends());
+        AccessTokenTracker accessTokenTracker = new AccessTokenTracker() {
+            @Override
+            protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
+                if (currentAccessToken == null) {
+                    Intent intent = new Intent(SelectVideo.this,MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        };
     }
 
     void init() {
@@ -114,6 +134,7 @@ public class SelectVideo extends AppCompatActivity {
         mUserName = (TextView) findViewById(R.id.user_name);
 
     }
+
 
 
 }
