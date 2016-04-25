@@ -58,17 +58,15 @@ import rx.functions.Action1;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static ArrayList<UserInfo> friendsList = new ArrayList<>();
     static boolean isFBLoggedIn = false;
     String get_id, get_name, get_profile_image;
     private RelativeLayout userDetails;
-    private CustomEdTxt userName;
+    private TextView userName;
     private TextView unId;
-
     private Button regBtn;
     private LoginButton loginButton;
     private CallbackManager callbackManager;
-
-    public static ArrayList<UserInfo> friendsList = new ArrayList<>();
 
     /**
      * Find the Views in the layout<br />
@@ -78,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void findViews() {
         userDetails = (RelativeLayout) findViewById(R.id.user_details);
-        userName = (CustomEdTxt) findViewById(R.id.user_name);
+        userName = (TextView) findViewById(R.id.user_name);
 //        profilePicPath = (CustomEdTxt)findViewById( R.id.pic_path);
         unId = (TextView) findViewById(R.id.un_id);
         regBtn = (Button) findViewById(R.id.reg_btn);
