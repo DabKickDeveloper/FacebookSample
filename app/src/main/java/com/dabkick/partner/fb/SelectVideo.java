@@ -89,7 +89,7 @@ public class SelectVideo extends AppCompatActivity {
                     public void run() {
                         mProgressBar.setVisibility(View.GONE);
                         //call this method with the search term to get the results
-                        VideosList = videoManager.getSearchResultByTerm("facebook");
+                        VideosList = videoManager.getSearchResultByTerm("funnyordie");
                         mVideoHorizontalAdapter = new VideoHorizontalAdapter(SelectVideo.this, R.layout.video_view_item, VideosList, false);
                         hListView.setAdapter(mVideoHorizontalAdapter);
                         mVideoHorizontalAdapter.notifyDataSetChanged();
@@ -99,7 +99,7 @@ public class SelectVideo extends AppCompatActivity {
             }
         });
         //Condition check to load the searched videos if not throw alert(logic done in DabKickVideoManagerAgent)
-        videoManager.searchVideo("facebook");
+        videoManager.searchVideo("funnyordie");
 
         hListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
