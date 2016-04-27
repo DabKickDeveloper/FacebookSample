@@ -205,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
             protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
                 if (currentAccessToken == null) {
 
-                    Dabkick.reset();
+                    Dabkick.unregister(MainActivity.this);
                 }
             }
         };
